@@ -3,10 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication", "AvaloniaApplication\AvaloniaApplication.csproj", "{088388F6-62D8-4AE2-8E65-B07C5A568DD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication.Android", "AvaloniaApplication.Android\AvaloniaApplication.Android.csproj", "{7F186E09-8BDB-49EF-9E2A-5BE163E193DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication.Desktop", "AvaloniaApplication.Desktop\AvaloniaApplication.Desktop.csproj", "{03A7B902-2E0E-48A0-9CC8-E92C746D7898}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{088388F6-62D8-4AE2-8E65-B07C5A568DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088388F6-62D8-4AE2-8E65-B07C5A568DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088388F6-62D8-4AE2-8E65-B07C5A568DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088388F6-62D8-4AE2-8E65-B07C5A568DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F186E09-8BDB-49EF-9E2A-5BE163E193DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F186E09-8BDB-49EF-9E2A-5BE163E193DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F186E09-8BDB-49EF-9E2A-5BE163E193DE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7F186E09-8BDB-49EF-9E2A-5BE163E193DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F186E09-8BDB-49EF-9E2A-5BE163E193DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F186E09-8BDB-49EF-9E2A-5BE163E193DE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{03A7B902-2E0E-48A0-9CC8-E92C746D7898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A7B902-2E0E-48A0-9CC8-E92C746D7898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A7B902-2E0E-48A0-9CC8-E92C746D7898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A7B902-2E0E-48A0-9CC8-E92C746D7898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
