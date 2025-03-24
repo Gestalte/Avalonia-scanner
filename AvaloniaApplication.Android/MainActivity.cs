@@ -3,7 +3,9 @@ using Android.Content.PM;
 
 using Avalonia;
 using Avalonia.Android;
+using Avalonia.Maui;
 using Avalonia.ReactiveUI;
+using AvaloniaApplication.Maui;
 
 namespace AvaloniaApplication.Android;
 
@@ -19,6 +21,7 @@ public class MainActivity : AvaloniaMainActivity<App>
     {
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
-            .UseReactiveUI();
+            .UseReactiveUI()
+            .UseMaui<MauiApplication>(this);
     }
 }
