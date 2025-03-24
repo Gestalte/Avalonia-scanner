@@ -24,8 +24,11 @@
 		<Button 
 			Content="Scan" 
 			Command="{Binding StartScanning}"/>
-		<controls:MauiControlHost>
-			<mauiControls:Button Text="MAUI Button" />
+		<controls:MauiControlHost Height="40" Width="200">
+			<mauiControls:Button 
+				BackgroundColor="Pink" 
+				TextColor="Black" 
+				Text="MAUI Button"/>
 		</controls:MauiControlHost>
 	</StackPanel>
 </UserControl>
