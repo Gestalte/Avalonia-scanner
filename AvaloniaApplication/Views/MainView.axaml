@@ -3,10 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:AvaloniaApplication.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
              x:Class="AvaloniaApplication.Views.MainView"
              x:DataType="vm:MainViewModel"
 			 
+			 xmlns:zxing="using:ZXing.Net.Maui.Controls"
 			 xmlns:controls="using:Avalonia.Maui.Controls"
 			 xmlns:mauiControls="using:Microsoft.Maui.Controls"
 			 >
@@ -16,19 +17,69 @@
 		<vm:MainViewModel />
 	</Design.DataContext>
 
-	<StackPanel
-		HorizontalAlignment="Center"
-		VerticalAlignment="Center">
-		<TextBlock 
-			Text="{Binding ScanResult}"/>
-		<Button 
-			Content="Scan" 
-			Command="{Binding StartScanning}"/>
-		<controls:MauiControlHost Height="40" Width="200">
-			<mauiControls:Button 
-				BackgroundColor="Pink" 
-				TextColor="Black" 
-				Text="MAUI Button"/>
+	<Grid RowDefinitions="* auto" ColumnDefinitions="auto *" Background="Gray">
+		<controls:MauiControlHost
+			IsVisible="{Binding !ShowResults}"
+			Grid.ColumnSpan="2"
+			Grid.Row="0"
+			x:Name="cameraBarcodeReaderHost">
+			<zxing:CameraBarcodeReaderView
+				BarcodesDetected="BarcodesDetected"/>
 		</controls:MauiControlHost>
-	</StackPanel>
+		<Button
+			Grid.Column="0"
+			Grid.Row="1"
+			Foreground="Yellow"
+			Background="Tan"
+			BorderBrush="Yellow"
+			BorderThickness="2"
+			Margin="10"
+			Command="{Binding ToggleTorch}"
+			Content="Torch"/>
+
+		<Panel
+			IsVisible="{Binding ShowResults}"
+			Background="DarkGray"
+			Opacity="65"
+			Grid.Row="0"
+			Grid.Column="0"
+			Grid.RowSpan="2"
+			Grid.ColumnSpan="2"/>
+		<Grid
+			IsVisible="{Binding ShowResults}"
+			Grid.Row="0"
+			Grid.Column="0"
+			Grid.RowSpan="2"
+			Grid.ColumnSpan="2"
+			ColumnDefinitions="* auto *"
+			RowDefinitions="* auto *">
+			<Border
+				Grid.Row="1"
+				Grid.Column="1"
+				BorderThickness="2"
+				BorderBrush="Black">
+			<Panel
+				Background="White"
+				Opacity="1">
+				<StackPanel>
+					<TextBlock
+						Margin="10"
+						FontSize="26"
+						Text="Scan Result:"/>
+					<TextBlock Margin="10" FontSize="18" Text="{Binding ScanResult}"/>
+					<Button 
+						Foreground="DarkGreen"
+						Background="LightGreen"
+						BorderBrush="Green"
+						BorderThickness="2"
+						Margin="10"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center" 
+						Content="Scan Again"
+						Command="{Binding ScanAgain}"/>
+				</StackPanel>
+			</Panel>
+			</Border>
+		</Grid>
+	</Grid>
 </UserControl>
