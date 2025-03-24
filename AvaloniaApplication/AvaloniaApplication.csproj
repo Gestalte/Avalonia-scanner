@@ -5,6 +5,7 @@
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<UseMaui>true</UseMaui>
+		<UseMauiEssentials>true</UseMauiEssentials>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -21,5 +22,6 @@
 
 		<PackageReference Include="Avalonia.Maui" Version="11.1.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.50" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.50" />
 	</ItemGroup>
 </Project>
