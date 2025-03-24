@@ -6,6 +6,7 @@ using Avalonia.Android;
 using Avalonia.Maui;
 using Avalonia.ReactiveUI;
 using AvaloniaApplication.Maui;
+using ZXing.Net.Maui.Controls;
 
 namespace AvaloniaApplication.Android;
 
@@ -22,6 +23,6 @@ public class MainActivity : AvaloniaMainActivity<App>
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
             .UseReactiveUI()
-            .UseMaui<MauiApplication>(this);
+            .UseMaui<MauiApplication>(this, b => b.UseBarcodeReader());
     }
 }
