@@ -24,7 +24,9 @@ public partial class MainView : UserControl
         {
             Formats = BarcodeFormats.OneDimensional,
             AutoRotate = true,
-            Multiple = true
+            Multiple = true,
+            TryHarder = true,
+            TryInverted = true,
         };
 
         if (DataContext is MainViewModel vm)
