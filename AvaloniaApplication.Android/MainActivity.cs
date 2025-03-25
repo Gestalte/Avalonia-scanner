@@ -11,7 +11,7 @@ using ZXing.Net.Maui.Controls;
 namespace AvaloniaApplication.Android;
 
 [Activity(
-    Label = "AvaloniaApplication.Android",
+    Label = "Scanner Test",
     Theme = "@style/MyTheme.NoActionBar",
     Icon = "@drawable/icon",
     MainLauncher = true,
