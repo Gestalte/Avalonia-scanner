@@ -30,17 +30,17 @@ public partial class ScannerView : UserControl
         this.cameraBarcodeReaderView = (CameraBarcodeReaderView)this.Get<MauiControlHost>("cameraBarcodeReaderHost").Content!;
         this.cameraBarcodeReaderView.Options = new BarcodeReaderOptions
         {
-            Formats = BarcodeFormats.All,
+            Formats = BarcodeFormats.OneDimensional, //| BarcodeFormat.QrCode,
             AutoRotate = true,
-            Multiple = true,
-            TryHarder = true,
-            TryInverted = true,
+            Multiple = false,
+            TryHarder = false,
+            TryInverted = false,
         };
 
         if (DataContext is ScannerViewModel vm)
         {
             vm.TorchToggled += TorchToggled;
-            vm.CameraLocationToggled += CameraLocationToggled;           
+            vm.CameraLocationToggled += CameraLocationToggled;
         }
 
         this.cameraBarcodeReaderView.IsDetecting = true;
@@ -93,6 +93,11 @@ public partial class ScannerView : UserControl
         {
             this.cameraBarcodeReaderView.IsDetecting = false;
             System.Diagnostics.Debug.WriteLine($"IsDetecting: {this.cameraBarcodeReaderView.IsDetecting}", "[INFO]");
+
+            if (torchState)
+            {
+                TorchToggled();
+            }
         }
 
         System.Diagnostics.Debug.WriteLine(nameof(BarcodesDetected), "[TRACE]");
