@@ -4,6 +4,7 @@ using Avalonia.Markup.Xaml;
 
 using AvaloniaApplication.ViewModels;
 using AvaloniaApplication.Views;
+using Splat;
 
 namespace AvaloniaApplication;
 

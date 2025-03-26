@@ -5,81 +5,73 @@
              xmlns:vm="clr-namespace:AvaloniaApplication.ViewModels"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
              x:Class="AvaloniaApplication.Views.MainView"
-             x:DataType="vm:MainViewModel"
-			 
-			 xmlns:zxing="using:ZXing.Net.Maui.Controls"
-			 xmlns:controls="using:Avalonia.Maui.Controls"
-			 xmlns:mauiControls="using:Microsoft.Maui.Controls"
-			 >
+             x:DataType="vm:MainViewModel">
+
 	<Design.DataContext>
-		<!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
 		<vm:MainViewModel />
 	</Design.DataContext>
 
-	<Grid RowDefinitions="* auto" ColumnDefinitions="auto *" Background="Gray">
-		<controls:MauiControlHost
-			IsVisible="{Binding !ShowResults}"
-			Grid.ColumnSpan="2"
-			Grid.Row="0"
-			x:Name="cameraBarcodeReaderHost">
-			<zxing:CameraBarcodeReaderView
-				BarcodesDetected="BarcodesDetected"/>
-		</controls:MauiControlHost>
+	<Grid
+		RowDefinitions="* auto *"
+		ColumnDefinitions="* auto *">
+
 		<Button
-			Grid.Column="0"
+			Grid.Column="1"
 			Grid.Row="1"
-			Foreground="Yellow"
-			Background="Tan"
-			BorderBrush="Yellow"
-			BorderThickness="2"
-			Margin="10"
-			Command="{Binding ToggleTorch}"
-			Content="Torch"/>
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Padding="20"
+			Command="{Binding ScanCommand}"
+			Content="Scan"/>
+
+		<ContentControl
+			Grid.Column="0"
+			Grid.Row="0"
+			Grid.ColumnSpan="3"
+			Grid.RowSpan="3"
+			IsVisible="{Binding ShowScanner}"
+			Content="{Binding Scanner}"/>
 
 		<Panel
-			IsVisible="{Binding ShowResults}"
-			Background="DarkGray"
-			Opacity="65"
-			Grid.Row="0"
+			IsVisible="{Binding ShowResult}"
 			Grid.Column="0"
-			Grid.RowSpan="2"
-			Grid.ColumnSpan="2"/>
-		<Grid
-			IsVisible="{Binding ShowResults}"
 			Grid.Row="0"
-			Grid.Column="0"
-			Grid.RowSpan="2"
-			Grid.ColumnSpan="2"
-			ColumnDefinitions="* auto *"
-			RowDefinitions="* auto *">
+			Grid.ColumnSpan="3"
+			Grid.RowSpan="3"
+			Background="Black"
+			Opacity="90"/>
+		<Panel
+			IsVisible="{Binding ShowResult}"
+			Background="White"
+			Grid.Column="1"
+			Grid.Row="1">
 			<Border
-				Grid.Row="1"
-				Grid.Column="1"
-				BorderThickness="2"
-				BorderBrush="Black">
-			<Panel
-				Background="White"
-				Opacity="1">
-				<StackPanel>
+				BorderBrush="LightGreen"
+				BorderThickness="1">
+				<Grid RowDefinitions="* * *">
 					<TextBlock
-						Margin="10"
+						Grid.Row="0"
+						Margin="20"
 						FontSize="26"
+						HorizontalAlignment="Center"
 						Text="Scan Result:"/>
-					<TextBlock Margin="10" FontSize="18" Text="{Binding ScanResult}"/>
-					<Button 
+					<TextBlock
+						Grid.Row="1"
+						Margin="20"
+						FontSize="20"
+						HorizontalAlignment="Center"
+						Text="{Binding ScanResult}"/>
+					<Button
+						Grid.Row="2"
+						Margin="20"
 						Foreground="DarkGreen"
 						Background="LightGreen"
-						BorderBrush="Green"
-						BorderThickness="2"
-						Margin="10"
-						VerticalAlignment="Center"
-						HorizontalAlignment="Center" 
-						Content="Scan Again"
-						Command="{Binding ScanAgain}"/>
-				</StackPanel>
-			</Panel>
+						BorderBrush="DarkGreen"
+						HorizontalAlignment="Center"
+						Command="{Binding ScanCommand}"
+						Content="Scan Again"/>
+				</Grid>
 			</Border>
-		</Grid>
+		</Panel>
 	</Grid>
 </UserControl>

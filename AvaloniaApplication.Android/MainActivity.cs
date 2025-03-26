@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content.PM;
-
 using Avalonia;
 using Avalonia.Android;
 using Avalonia.Maui;
@@ -20,6 +19,9 @@ public class MainActivity : AvaloniaMainActivity<App>
 {
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
+        Services.PermissionService = new AndroidPermissionService();
+        Services.ToastService = new ToastService(ApplicationContext!);
+
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
             .UseReactiveUI()

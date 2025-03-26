@@ -1,0 +1,72 @@
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="AvaloniaApplication.ScannerView"
+			 
+	xmlns:vm="clr-namespace:AvaloniaApplication.ViewModels"
+    mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
+	x:DataType="vm:ScannerViewModel"
+			 
+	xmlns:zxing="using:ZXing.Net.Maui.Controls"
+	xmlns:controls="using:Avalonia.Maui.Controls"
+	xmlns:mauiControls="using:Microsoft.Maui.Controls">
+
+	<Design.DataContext>
+		<vm:ScannerViewModel />
+	</Design.DataContext>
+
+	<Grid 
+		ColumnDefinitions="* * *" 
+		RowDefinitions="* auto" 
+		Background="White">
+		<controls:MauiControlHost
+			Grid.Column="0"
+			Grid.ColumnSpan="3"
+			x:Name="cameraBarcodeReaderHost">
+			<zxing:CameraBarcodeReaderView
+				BarcodesDetected="BarcodesDetected"/>
+		</controls:MauiControlHost>
+		<Button 
+			Margin="20 20 0 20"
+			FontWeight="Bold"
+			Grid.Row="1" 
+			Grid.Column="0" 
+			Foreground="Yellow"
+			Background="Khaki"
+			BorderBrush="Yellow"
+			HorizontalAlignment="Left"
+			HorizontalContentAlignment="Center"
+			Width="100"
+			Command="{Binding ToggleTorch}"
+			Content="Torch"/>
+		<Button 
+			Margin="0 20 0 20"
+			FontWeight="Bold"
+			Grid.Row="1" 
+			Grid.Column="1" 
+			Foreground="Orange"
+			Background="Bisque"
+			BorderBrush="Orange"
+			HorizontalAlignment="Center"
+			HorizontalContentAlignment="Center"
+			Width="100"
+			Command="{Binding CancelCommand}"
+			Content="Cancel"/>
+		<Button 
+			Margin="0 20 20 20"
+			FontWeight="Bold"
+			Grid.Row="1" 
+			Grid.Column="2" 
+			Foreground="Blue"
+			Background="AliceBlue"
+			BorderBrush="Blue"
+			HorizontalAlignment="Right"
+			HorizontalContentAlignment="Center"
+			Width="100"
+			Command="{Binding ToggleCameraLocation}"
+			Content="Camera"/>
+	</Grid>
+
+</UserControl>
